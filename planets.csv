@@ -1,0 +1,9 @@
+Name,Diameter_km,Distance_from_Sun_AU,Mass_1e24kg,Orbital_Period_days,Mean_Temp_C
+Mercury,4879,0.39,0.33,88,167
+Venus,12104,0.72,4.87,225,464
+Earth,12742,1.0,5.97,365,15
+Mars,6779,1.52,0.64,687,-65
+Jupiter,139820,5.2,1898.0,4333,-110
+Saturn,116460,9.58,568.0,10759,-140
+Uranus,50724,19.2,86.8,30687,-195
+Neptune,49244,30.05,102.0,60190,-200
