@@ -7,3 +7,6 @@ Isochrones downloaded:
 
 Both isochrones generated with cubic interpolation, default Helium mass fraction Y=0.245+1.5*Z, and color set to SDSS ugriz
 
+## 2. Downloaded SDSS data via SQL query
+Self-explanatory. Used coordinates suggested in instructions doc
+
