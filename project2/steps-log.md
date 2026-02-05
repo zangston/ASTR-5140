@@ -10,3 +10,4 @@ Both isochrones generated with cubic interpolation, default Helium mass fraction
 ## 2. Downloaded SDSS data via SQL query
 Self-explanatory. Used coordinates suggested in instructions doc
 
+Created Jupyter notebook. Used AI to generate code that reads in isochrone files and SDSS data. Plotted both data on CMD space separately. Then introduced dereddening to SDSS data and distance-correction to isochrone curves.
