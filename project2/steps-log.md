@@ -11,3 +11,6 @@ Both isochrones generated with cubic interpolation, default Helium mass fraction
 Self-explanatory. Used coordinates suggested in instructions doc
 
 Created Jupyter notebook. Used AI to generate code that reads in isochrone files and SDSS data. Plotted both data on CMD space separately. Then introduced dereddening to SDSS data and distance-correction to isochrone curves.
+
+Used AI to generate code that downloads "control" fields to compare with target field. Kept same declination and varied RA.
+
