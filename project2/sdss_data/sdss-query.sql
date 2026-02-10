@@ -10,7 +10,7 @@ SELECT
     p.extinction_u, p.extinction_g, p.extinction_r, p.extinction_i, p.extinction_z,     -- Extinction
     p.type,      -- 6 = STAR
     p.mode       -- 1 = PRIMARY (unique object)
-FROM PhotoObjAll AS p
+FROM PhotoPrimary AS p
 WHERE 
     p.ra BETWEEN 31.905833 AND 32.905833 
     AND p.dec BETWEEN -5.142111 AND -4.142111
