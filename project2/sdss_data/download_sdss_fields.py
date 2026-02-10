@@ -79,6 +79,7 @@ WHERE
 AND p.dec BETWEEN {box.dec_min:.6f} AND {box.dec_max:.6f}
 AND p.type = 6
 AND p.mode = 1
+AND p.clean = 1
 {EXTRA_WHERE}
 """
     # SkyServer is fine with newlines, but we'll strip extra whitespace to be safe.
