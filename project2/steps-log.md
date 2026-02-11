@@ -14,3 +14,5 @@ Created Jupyter notebook. Used AI to generate code that reads in isochrone files
 
 Used AI to generate code that downloads "control" fields to compare with target field. Kept same declination and varied RA.
 
+## 3. Plotted field data and used chi-squared filtering to compute population membership
+After excluding dim stars and high-uncertainty stars, defined a function that calculates chi-squared distance in color-magnitude space from isochrone points. Plotted stars that were within 2-sigma chi-squared distances from any isochrone point. 
