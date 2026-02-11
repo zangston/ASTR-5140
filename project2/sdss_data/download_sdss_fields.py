@@ -58,18 +58,26 @@ def wrap_ra(ra: float) -> float:
 
 def make_box(field_id: str, ra_center: float, dec_center: float, half_size: float) -> FieldBox:
     ra_center = wrap_ra(ra_center)
-    return FieldBox(
-        field_id=field_id,
-        ra_min=ra_center - half_size,
-        ra_max=ra_center + half_size,
-        dec_min=dec_center - half_size,
-        dec_max=dec_center + half_size,
-    )
+    ra_min = ra_center - half_size
+    ra_max = ra_center + half_size
 
+    # keep dec normal (no wrap)
+    dec_min = dec_center - half_size
+    dec_max = dec_center + half_size
+
+    # store raw ra_min/ra_max (may be <0 or >360); handle in SQL
+    return FieldBox(field_id=field_id, ra_min=ra_min, ra_max=ra_max, dec_min=dec_min, dec_max=dec_max)
 
 def build_sql(box: FieldBox) -> str:
-    # NOTE: For your RA range (near 32°), ra_min/ra_max won't cross 0,
-    # so BETWEEN is safe. If you ever wrap across 0, you'd need OR logic.
+    # RA condition with wrap handling
+    if box.ra_min < 0:
+        # e.g. ra BETWEEN 0 and ra_max OR ra BETWEEN 360+ra_min and 360
+        ra_cond = f"(p.ra BETWEEN 0 AND {box.ra_max:.6f} OR p.ra BETWEEN {360.0+box.ra_min:.6f} AND 360)"
+    elif box.ra_max >= 360:
+        ra_cond = f"(p.ra BETWEEN {box.ra_min:.6f} AND 360 OR p.ra BETWEEN 0 AND {box.ra_max-360.0:.6f})"
+    else:
+        ra_cond = f"(p.ra BETWEEN {box.ra_min:.6f} AND {box.ra_max:.6f})"
+
     sql = f"""
 SELECT
     p.objid,
@@ -81,7 +89,7 @@ SELECT
     p.mode
 FROM PhotoPrimary AS p
 WHERE
-    p.ra  BETWEEN {box.ra_min:.6f} AND {box.ra_max:.6f}
+    {ra_cond}
 AND p.dec BETWEEN {box.dec_min:.6f} AND {box.dec_max:.6f}
 AND p.type = 6
 AND p.mode = 1
@@ -106,12 +114,33 @@ def main() -> None:
     fields.append(make_box("target", RA0, DEC0, HALF_SIZE_DEG))
 
     # Controls
+    '''
     offsets = [CONTROL_STEP_DEG * i for i in range(1, N_PER_SIDE + 1)]
     offsets = [-o for o in offsets] + offsets  # 15 negative + 15 positive
 
     for off in offsets:
         tag = f"ra_{'p' if off > 0 else 'm'}{abs(off):02d}"  # ra_m02, ra_p30, etc
         fields.append(make_box(tag, RA0 + off, DEC0, HALF_SIZE_DEG))
+    '''
+    # Controls chosen far away but with similar Galactic latitude (precomputed)
+    CONTROL_CENTERS = [
+        ("glon_080", 353.381110, -4.590060),
+        ("glon_085", 355.375477, -3.178909),
+        ("glon_090", 357.466454, -1.919136),
+        ("glon_095", 359.644412, -0.819254),
+        ("glon_100",   1.898647,  0.113008),
+        ("glon_105",   4.217379,  0.870862),
+        ("glon_110",   6.587807,  1.448624),
+        ("glon_115",   8.996243,  1.841851),
+        ("glon_120",  11.428305,  2.047465),
+        ("glon_125",  13.869163,  2.063840),
+        ("glon_130",  16.303813,  1.890845),
+        ("glon_135",  18.717374,  1.529851),
+        ("glon_140",  21.095369,  0.983691),
+    ]
+
+    for field_id, ra_c, dec_c in CONTROL_CENTERS:
+        fields.append(make_box(field_id, ra_c, dec_c, HALF_SIZE_DEG))
 
     print(f"Downloading {len(fields)} fields ({len(fields)-1} controls) from {BASE_URL}")
     print(f"Output directory: {OUTDIR.resolve()}")
