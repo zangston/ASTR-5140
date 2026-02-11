@@ -22,3 +22,7 @@ After excluding dim stars and high-uncertainty stars, defined a function that ca
 This process was repeated in a separate Jupyter notebook to use a simpler metric where a candidate stream star was defined as a star that simply had its error box overlap with the the isochrone curves. Similar summary statistics were computed using this sampling method.
 
 Both methods showed a significant overdensity in the target region, which suggests the presence of stream stars.
+
+Additionally, code was written to generate Hess diagrams for both target and control fields. Then a residual plot was created, which reveals that there appears to be a statistical overdensity that follows the general shape of the isochrones in the MSTO region. 
+
+Finally, AI was used to clean up code.
