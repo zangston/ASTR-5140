@@ -5,7 +5,6 @@ saving each field as an individual CSV.
 
 Uses SDSS SkyServer SQL web service:
   https://skyserver.sdss.org/dr17/SkyServerWS/SearchTools/SqlSearch?cmd=...&format=csv
-(Endpoint pattern is widely used; see examples in SDSS/SciServer docs and tutorials.)
 """
 
 from __future__ import annotations
@@ -13,26 +12,27 @@ from __future__ import annotations
 import time
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Tuple
+from typing import List
 from urllib.parse import urlencode
 
 import requests
 
 
 # ---------- CONFIG ----------
-DATA_RELEASE = "dr17"  # change if your class requires a specific release
+DATA_RELEASE = "dr17"
 BASE_URL = f"https://skyserver.sdss.org/{DATA_RELEASE}/SkyServerWS/SearchTools/SqlSearch"
 
 OUTDIR = Path("sdss_data/fields")
 OUTDIR.mkdir(parents=True, exist_ok=True)
 
-# Your target field center (from assignment)
+# Target field center
 RA0 = 32.405833
 DEC0 = -4.642111
 HALF_SIZE_DEG = 0.5  # 1°×1° box
 
-# Controls: RA offsets (deg) at same Dec
-RA_OFFSETS = [-15, -10, -5, 5, 10, 15]
+# 30 controls: 15 on each side, step 2° => ±2, ±4, ..., ±30
+CONTROL_STEP_DEG = 2
+N_PER_SIDE = 15  # 15 negative + 15 positive = 30 controls
 
 # Sleep between requests so you don't hammer the server
 SLEEP_SECONDS = 1.0
@@ -51,7 +51,13 @@ class FieldBox:
     dec_max: float
 
 
+def wrap_ra(ra: float) -> float:
+    """Wrap RA into [0, 360)."""
+    return ra % 360.0
+
+
 def make_box(field_id: str, ra_center: float, dec_center: float, half_size: float) -> FieldBox:
+    ra_center = wrap_ra(ra_center)
     return FieldBox(
         field_id=field_id,
         ra_min=ra_center - half_size,
@@ -62,8 +68,8 @@ def make_box(field_id: str, ra_center: float, dec_center: float, half_size: floa
 
 
 def build_sql(box: FieldBox) -> str:
-    # Using PhotoPrimary is usually cleaner than PhotoObjAll for CMD work.
-    # Keep the query simple; do quality cuts in Python.
+    # NOTE: For your RA range (near 32°), ra_min/ra_max won't cross 0,
+    # so BETWEEN is safe. If you ever wrap across 0, you'd need OR logic.
     sql = f"""
 SELECT
     p.objid,
@@ -82,18 +88,14 @@ AND p.mode = 1
 AND p.clean = 1
 {EXTRA_WHERE}
 """
-    # SkyServer is fine with newlines, but we'll strip extra whitespace to be safe.
     return " ".join(sql.split())
 
 
 def fetch_csv(sql: str, outfile: Path, timeout: int = 300) -> None:
     params = {"cmd": sql, "format": "csv"}
     url = f"{BASE_URL}?{urlencode(params)}"
-
     r = requests.get(url, timeout=timeout)
     r.raise_for_status()
-
-    # SkyServer CSV often begins with "#Table1" comment line; keep it.
     outfile.write_bytes(r.content)
 
 
@@ -103,25 +105,27 @@ def main() -> None:
     # Target
     fields.append(make_box("target", RA0, DEC0, HALF_SIZE_DEG))
 
-    # Controls (RA offsets)
-    for off in RA_OFFSETS:
-        tag = f"ra_{'p' if off > 0 else 'm'}{abs(off)}"
+    # Controls
+    offsets = [CONTROL_STEP_DEG * i for i in range(1, N_PER_SIDE + 1)]
+    offsets = [-o for o in offsets] + offsets  # 15 negative + 15 positive
+
+    for off in offsets:
+        tag = f"ra_{'p' if off > 0 else 'm'}{abs(off):02d}"  # ra_m02, ra_p30, etc
         fields.append(make_box(tag, RA0 + off, DEC0, HALF_SIZE_DEG))
 
-    print(f"Downloading {len(fields)} fields from {BASE_URL}")
+    print(f"Downloading {len(fields)} fields ({len(fields)-1} controls) from {BASE_URL}")
     print(f"Output directory: {OUTDIR.resolve()}")
     print()
 
     for i, box in enumerate(fields, start=1):
         sql = build_sql(box)
         outfile = OUTDIR / f"sdss_{box.field_id}.csv"
-        print(f"[{i}/{len(fields)}] {box.field_id}: "
+        print(f"[{i:02d}/{len(fields):02d}] {box.field_id}: "
               f"RA[{box.ra_min:.3f},{box.ra_max:.3f}] Dec[{box.dec_min:.3f},{box.dec_max:.3f}] -> {outfile.name}")
 
         try:
             fetch_csv(sql, outfile)
         except requests.HTTPError as e:
-            # Save the SQL that failed for debugging
             debug_sql = OUTDIR / f"FAILED_{box.field_id}.sql.txt"
             debug_sql.write_text(sql)
             print(f"  ERROR: {e}\n  Saved failing SQL to: {debug_sql.name}")
