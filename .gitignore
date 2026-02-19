@@ -2,3 +2,6 @@
 __pycache__/
 **/__pycache__/
 .ipynb_checkpoints/
+
+illustris_python/
+*.hdf5
