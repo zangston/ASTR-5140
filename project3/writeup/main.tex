@@ -80,7 +80,7 @@ summarize it here as well. Given the data volume you should think about how to p
 clearly.}
 
 \textbf{Columns and Data Preparation:}
-Masses were converted from simulation units to physical $M_\odot$ using the $10^{10}/h$ scaling given in the IllustrisTNG documentation. To enable log--log visualization, objects with non-finite or non-positive halo mass or black hole mass were excluded. Because the catalogs contain millions of entries, relations were visualized with a log-scaled \texttt{hexbin} density plot to avoid overplotting while retaining information about the number density in parameter space.
+Masses were converted from simulation units to physical $M_\odot$ using the $10^{10}/h$ scaling given in the IllustrisTNG documentation \citep{IllustrisTNG_Documentation}. To enable log--log visualization, objects with non-finite or non-positive halo mass or black hole mass were excluded. Because the catalogs contain millions of entries, relations were visualized with a log-scaled \texttt{hexbin} density plot to avoid overplotting while retaining information about the number density in parameter space.
 
 \textbf{SubFind (Subhalo) Relation:}
 
@@ -134,13 +134,11 @@ A power-law relation provides a natural description of the trends in Figures~\re
 \subsection{Step 3: SubFind vs. FoF Comparison}
 \textcolor{blue}{\textbf{Prompt:} Determine if there is a difference in the relation between the SubFind and FoF catalogs. Form a hypothesis as to why there should or should not be a difference and include it in your write-up.}
 
-At low halo masses, the SubFind relation exhibits noticeably larger scatter than the FoF relation. This is likely a consequence of the black hole seeding prescription in the simulation: black holes are introduced only once halos exceed a threshold mass and begin with a fixed seed mass. Many low-mass subhalos therefore host either no black hole or a newly seeded one, producing substantial dispersion.
-
-Additional scatter arises from environmental effects such as tidal stripping. Satellite subhalos can lose dark matter mass while retaining their central black holes, further broadening the relation at the low-mass end.
+At low halo masses, the SubFind relation exhibits noticeably larger scatter than the FoF relation. This is likely a consequence of the black hole seeding prescription in the simulation: black holes are introduced only once halos exceed a threshold mass and begin with a fixed seed mass \citep{Weinberger2017TNG_BHFB}. Many low-mass subhalos therefore host either no black hole or a newly seeded one, producing substantial dispersion.
 
 In contrast, FoF halos combine the mass of multiple galaxies and their black holes, which smooths the overall trend and reduces stochasticity, particularly at higher masses. At the massive end, both relations become tighter as black hole growth is dominated by mergers and sustained gas accretion, leading to a more regulated scaling with halo mass.
 
-Overall, the SubFind relation primarily traces black hole--galaxy co-evolution, while the FoF relation reflects the connection between black holes and the assembly history of their host dark matter halos.
+Overall, the SubFind relation primarily traces black hole--galaxy co-evolution, while FoF reflects the connection between black holes and the assembly history of their host dark matter halos.
 
 \subsection{Step 4: Stellar Mass vs. Black Hole Mass}
 \textcolor{blue}{\textbf{Prompt:} Plot the relation between galaxy stellar mass and black hole mass and comment on it briefly. Is it tighter or more scattered than the halo mass -- black hole mass relation? Is the correlation what you
@@ -173,7 +171,7 @@ Several parameters were plotted against black hole mass: velocity dispersion, st
 
 Velocity dispersion and maximum circular velocity show the strongest correlations with black hole mass. Both quantities trace the depth of the gravitational potential in the central regions of galaxies. A deeper potential well promotes gas inflow toward the galaxy center, enabling sustained black hole growth through accretion and mergers. This leads naturally to a scaling between black hole mass and dynamical measures of the host system.
 
-In contrast, the correlations with star formation rate and gas mass are weaker. Star formation rate is a time-dependent quantity that reflects current activity rather than the integrated evolutionary history of the galaxy, and therefore does not track black hole growth as tightly. Similarly, total gas mass does not necessarily indicate how efficiently gas reaches the central black hole, as gas can remain in extended disks or be removed through feedback processes. Additionally, feedback from active galactic nuclei can suppress star formation in massive systems, producing quenched galaxies with large black holes but low star formation rates. This further weakens any direct correlation between star formation and black hole mass.
+In contrast, the correlations with star formation rate and gas mass are weaker. Star formation rate is a time-dependent quantity that reflects current activity rather than the integrated evolutionary history of the galaxy, and therefore does not track black hole growth as tightly. Similarly, total gas mass does not necessarily indicate how efficiently gas reaches the central black hole, as gas can remain in extended disks or be removed through AGN feedback processes. Additionally, feedback from active galactic nuclei can suppress star formation in massive systems, producing quenched galaxies with large black holes but low star formation rates \citep{HeckmanBest2014}. This further weakens any direct correlation between star formation and black hole mass.
 
 \subsection{Step 6: Limitations and Caveats}
 \textcolor{blue}{\textbf{Prompt:} Comment on any limitations of the data products that you believe may impact the above
@@ -181,7 +179,7 @@ relations. If your work were to be published in a journal paper, what concerns w
 
 Several limitations of the IllustrisTNG data products may impact the scaling relations presented above.
 
-First, the black hole seeding prescription introduces artificial floors in many of the relations. Black holes are inserted with a fixed seed mass once halos exceed a threshold mass, producing a population of galaxies with similar black hole masses at the low-mass end. This results in horizontal features in log--log space and increased scatter that are numerical artifacts rather than physical predictions. Any quantitative interpretation of the low-mass regime must therefore be treated with caution.
+First, the black hole seeding prescription introduces artificial floors in many of the relations \citep{Weinberger2017TNG_BHFB}. Black holes are inserted with a fixed seed mass once halos exceed a threshold mass, producing a population of galaxies with similar black hole masses at the low-mass end. This results in horizontal features in log--log space and increased scatter that are numerical artifacts rather than physical predictions. Any quantitative interpretation of the low-mass regime must therefore be treated with caution.
 
 Second, the finite resolution of the simulation limits the reliability of results for low-mass galaxies. Small halos may be only marginally resolved, leading to uncertain stellar masses, velocity dispersions, and gas properties. Resolution effects can artificially broaden correlations or suppress intrinsic trends.
 
@@ -189,7 +187,7 @@ Third, filtering for $M_{\rm BH} > 0$ introduces a selection bias by excluding h
 
 Finally, structural definitions differ between FoF groups and SubFind subhalos. FoF masses are based on a percolation algorithm, while $M_{200c}$ is defined via a spherical overdensity criterion. These definitions can diverge during mergers or in dense environments, leading to small but non-negligible differences in halo mass estimates. Such systematic uncertainties could affect slope measurements or normalization if one were to perform precise quantitative fits.
 
-If this work were to be published, additional robustness tests would be necessary. These would include resolution convergence checks, sensitivity tests to the seeding prescription, and comparisons across different halo mass definitions.
+If this work were to be published, additional robustness tests would be necessary, as emphasized in the IllustrisTNG data release documentation and methodology papers \citep{Nelson2019TNG_PublicData}. These would include resolution convergence checks, sensitivity tests to the seeding prescription, and comparisons across different halo mass definitions.
 
 % ============================================================
 \section{Graduate Section (ASTR 5140 Only)}
@@ -255,7 +253,7 @@ gas accretion rates, and the stochastic nature of feedback processes. Residual e
 seeding prescription and finite numerical resolution may also contribute, particularly at the
 low-dispersion end.
 
-Overall, the simulation reproduces a realistic $M_{\rm BH}$--$\sigma$ scaling, indicating that the
+Overall, the simulation reproduces a realistic $M_{\rm BH}$--$\sigma$ scaling consistent with observational determinations \citep{Tremaine2002Msigma,KormendyHo2013}, indicating that the
 subgrid prescriptions for black hole growth and feedback capture the essential physics governing
 black hole--galaxy co-evolution.
 
@@ -317,7 +315,7 @@ Using the same luminosities as before, a histogram was created to show the distr
 Of the 36,883 selected subhalos, there were 3,416 above the threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$. This corresponds to a fraction of 0.0926 (9.26\%).
 
 \subsection{3. Using TNG Accretion Rates}
-
+\textcolor{blue}{\textbf{Prompt:} Now examine the actual black hole accretion rates as listed in the TNG catalogs.}
 \subsubsection{3a. Accretion Rate Comparison}
 \textcolor{blue}{\textbf{Prompt:} Make a plot comparing the black hole accretion rates in the TNG catalogs to the Eddington mass accretion rate as a function of halo mass. Discuss whether the TNG results are consistent with Eddington accretion.}
 
@@ -335,8 +333,7 @@ Only a small fraction of objects approach or exceed the Eddington limit.
 
 These results demonstrate that Eddington accretion represents an upper bound
 rather than a typical state in the simulation.
-Black hole growth in TNG is strongly self-regulated by
-AGN feedback.
+Black hole growth in TNG is strongly self-regulated by AGN feedback \citep{Weinberger2017TNG_BHFB,DiMatteo2005SelfReg,HeckmanBest2014}.
 As a result, most black holes spend the majority of their time in
 the sub-Eddington regime.
 
@@ -400,7 +397,7 @@ The distributions of AGN luminosities were computed for the same set of selected
 
 Figure~\ref{fig:grad-step3c-tng-vs-edd-accretion} shows the probability density distributions of $\log_{10} L$ for both cases using logarithmic bins. The vertical dashed line marks the quasar threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$.
 
-The two distributions differ substantially. The Eddington-based luminosities are systematically higher, peaking near $\log_{10}(L/\mathrm{erg\ s^{-1}})\sim 44$--46, while the TNG-derived luminosities are shifted to much lower values, with a median several orders of magnitude smaller. The median ratio between the two is about $7\times10^{-4}$, indicating that most black holes in the simulation accrete far below the Eddington limit. Physically, this reflects the fact that sustained Eddington accretion is rare.
+The two distributions differ substantially. The Eddington-based luminosities are systematically higher, peaking near $\log_{10}(L/\mathrm{erg\ s^{-1}})\sim 44$--46, while the TNG-derived luminosities are shifted to much lower values, with a median several orders of magnitude smaller. The median ratio between the two is about $7\times10^{-4}$, indicating that most black holes in the simulation accrete far below the Eddington limit. Physically, this reflects that Eddington accretion is not sustained for most systems: gas supply limits, feedback self-regulation, and AGN duty cycles \citep{Weinberger2017TNG_BHFB,DiMatteo2005SelfReg,HeckmanBest2014},
 
 \begin{figure}
 \centering
