@@ -144,7 +144,7 @@ Overall, the SubFind relation primarily traces black hole--galaxy co-evolution, 
 
 \subsection{Step 4: Stellar Mass vs. Black Hole Mass}
 \textcolor{blue}{\textbf{Prompt:} Plot the relation between galaxy stellar mass and black hole mass and comment on it briefly. Is it tighter or more scattered than the halo mass -- black hole mass relation? Is the correlation what you
-expected? And so on. You may provide other supporting plots here if you wish.}}
+expected? And so on. You may provide other supporting plots here if you wish.}
 
 A plot was created using the stellar mass of each galaxy, taken from the SubhaloMassType column (masked to type 4), and SubhaloBHMass for the black hole mass. This is shown in Figure~\ref{fig:step4-stellar-vs-bh}.
 
@@ -160,7 +160,7 @@ The stellar mass--black hole mass relation shows a clear positive correlation an
 At low stellar masses the relation broadens and exhibits a visible low-$M_{\rm BH}$ floor, consistent with the simulation's black hole seeding prescription.
 
 \subsection{Step 5: Additional Correlated Quantity}
-\textcolor{blue}{\textbf{Prompt:} Explore the data columns to identify another column that is correlated with black hole mass. Plot the relation and hypothesize as to the origin of the correlation.}}
+\textcolor{blue}{\textbf{Prompt:} Explore the data columns to identify another column that is correlated with black hole mass. Plot the relation and hypothesize as to the origin of the correlation.}
 
 Several parameters were plotted against black hole mass: velocity dispersion, star formation rate, gas mass, and maximum circular velocity. These are grouped in Figure~\ref{fig:step5-param-plots}.
 
@@ -177,7 +177,7 @@ In contrast, the correlations with star formation rate and gas mass are weaker. 
 
 \subsection{Step 6: Limitations and Caveats}
 \textcolor{blue}{\textbf{Prompt:} Comment on any limitations of the data products that you believe may impact the above
-relations. If your work were to be published in a journal paper, what concerns would you have?}}
+relations. If your work were to be published in a journal paper, what concerns would you have?}
 
 Several limitations of the IllustrisTNG data products may impact the scaling relations presented above.
 
@@ -196,7 +196,7 @@ If this work were to be published, additional robustness tests would be necessar
 % ============================================================
 
 \subsection{1. Black Hole Mass--Velocity Dispersion Relation}
-\textcolor{blue}{\textbf{Prompt:} Make cuts on the halo catalog to identify a list of subhalos with well-defined black hole masses and velocity dispersions (SubFind field [`SubhaloVelDisp`]). Summarize your cuts and plot this relation. Fit a model of your own design to this relation via least-squares or other similar technique. Comment on your result.}}
+\textcolor{blue}{\textbf{Prompt:} Make cuts on the halo catalog to identify a list of subhalos with well-defined black hole masses and velocity dispersions (SubFind field [`SubhaloVelDisp`]). Summarize your cuts and plot this relation. Fit a model of your own design to this relation via least-squares or other similar technique. Comment on your result.}
 
 \textbf{Data Selection and Cuts:}
 
@@ -260,11 +260,11 @@ subgrid prescriptions for black hole growth and feedback capture the essential p
 black hole--galaxy co-evolution.
 
 \subsection{2. AGN Luminosities}
-\textcolor{blue}{\textbf{Prompt:} Assume all black holes accrete at their Eddington luminosities and compute the corresponding AGN luminosities for the galaxies you selected from IllustrisTNG.}}
+\textcolor{blue}{\textbf{Prompt:} Assume all black holes accrete at their Eddington luminosities and compute the corresponding AGN luminosities for the galaxies you selected from IllustrisTNG.}
 
 \subsubsection{2a. Average Luminosity vs. Halo Mass}
 
-\textcolor{blue}{\textbf{Prompt:} Calculate and plot the average AGN luminosity as a function of halo mass.}}
+\textcolor{blue}{\textbf{Prompt:} Calculate and plot the average AGN luminosity as a function of halo mass.}
 
 For each selected SubFind subhalo, the host FoF halo was identified using the group index
 \texttt{SubhaloGrNr}, which maps each subhalo to an entry in the FoF catalog. Host halo masses were
@@ -300,7 +300,7 @@ log-spaced halo-mass bins.}
 \end{figure}
 
 \subsubsection{2b. Luminosity Distribution}
-\textcolor{blue}{\textbf{Prompt:} Plot the distribution (histogram) of AGN luminosities.}}
+\textcolor{blue}{\textbf{Prompt:} Plot the distribution (histogram) of AGN luminosities.}
 
 Using the same luminosities as before, a histogram was created to show the distribution of AGN luminosities, shown in Figure~\ref{fig:grad-step2b-luminosity}. As expected, this is a projection of Figure~\ref{fig:grad-step2a-ledd-m200c} along the vertical axis.
 
@@ -312,14 +312,14 @@ Using the same luminosities as before, a histogram was created to show the distr
 \end{figure}
 
 \subsubsection{2c. Fraction of Halos Above Threshold}
-\textcolor{blue}{\textbf{Prompt:} What fraction of halos in TNG100-1 have Eddington AGN luminosities greater than $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$?}}
+\textcolor{blue}{\textbf{Prompt:} What fraction of halos in TNG100-1 have Eddington AGN luminosities greater than $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$?}
 
 Of the 36,883 selected subhalos, there were 3,416 above the threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$. This corresponds to a fraction of 0.0926 (9.26\%).
 
 \subsection{3. Using TNG Accretion Rates}
 
 \subsubsection{3a. Accretion Rate Comparison}
-\textcolor{blue}{\textbf{Prompt:} Make a plot comparing the black hole accretion rates in the TNG catalogs to the Eddington mass accretion rate as a function of halo mass. Discuss whether the TNG results are consistent with Eddington accretion.}}
+\textcolor{blue}{\textbf{Prompt:} Make a plot comparing the black hole accretion rates in the TNG catalogs to the Eddington mass accretion rate as a function of halo mass. Discuss whether the TNG results are consistent with Eddington accretion.}
 
 Figure~\ref{fig:grad-step3a-accretion} compares the catalog black hole accretion rates,
 \(\dot{M}_{\rm TNG}\), to the corresponding Eddington mass accretion rates,
@@ -351,7 +351,7 @@ black holes generically accrete at the Eddington rate.
 \end{figure*}
 
 \subsubsection{3b. Luminosities from TNG Accretion}
-\textcolor{blue}{\textbf{Prompt:} Let the efficiency of converting mass accretion into luminosity ($\epsilon r$ in the reading) be 0.1. Compute AGN luminosities for the galaxies you selected from IllustrisTNG using the black hole accretion rates in the TNG catalogs. Plot the average AGN luminosity calculated this way as a function of halo mass and compare to the same plot you made in 2a) above assuming Eddington mass accretion. Plot the distribution of AGN luminosities and compare to the plot from 2b) above. What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs / s when using the TNG mass accretion rates? How does this compare to your answer from 2c) where you assumed Eddington accretion? Comment on how the assumption of Eddington accretion rates may affect predictions for the frequency of observing bright quasars.}}
+\textcolor{blue}{\textbf{Prompt:} Let the efficiency of converting mass accretion into luminosity ($\epsilon r$ in the reading) be 0.1. Compute AGN luminosities for the galaxies you selected from IllustrisTNG using the black hole accretion rates in the TNG catalogs. Plot the average AGN luminosity calculated this way as a function of halo mass and compare to the same plot you made in 2a) above assuming Eddington mass accretion. Plot the distribution of AGN luminosities and compare to the plot from 2b) above. What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs / s when using the TNG mass accretion rates? How does this compare to your answer from 2c) where you assumed Eddington accretion? Comment on how the assumption of Eddington accretion rates may affect predictions for the frequency of observing bright quasars.}
 
 Using the TNG black hole accretion rates (\texttt{SubhaloBHMdot}), AGN luminosities were computed assuming a radiative efficiency $\epsilon_r = 0.1$,
 \begin{equation}
@@ -387,7 +387,7 @@ This comparison demonstrates that assuming Eddington-limited accretion significa
 \end{figure}
 
 \subsubsection{3c. Luminosity Distribution}
-\textcolor{blue}{\textbf{Prompt:} Plot the distribution of AGN luminosities and compare to the plot from 2b.}}
+\textcolor{blue}{\textbf{Prompt:} Plot the distribution of AGN luminosities and compare to the plot from 2b.}
 
 The distributions of AGN luminosities were computed for the same set of selected subhalos used in the previous steps. Two luminosity estimates were compared:
 
@@ -415,7 +415,7 @@ The two distributions differ substantially. The Eddington-based luminosities are
 when using the TNG mass accretion rates? How does this compare to your answer from
 2c) where you assumed Eddington accretion? Comment on how the assumption of
 Eddington accretion rates may affect predictions for the frequency of observing bright
-quasars.}}
+quasars.}
 
 Using the luminosity-valid selected sample ($N = 36{,}883$ subhalos), we computed the fraction of
 objects exceeding a fixed quasar-like luminosity threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$. When assuming Eddington-limited accretion (Step 2c), $3{,}416$ objects exceeded the threshold,
