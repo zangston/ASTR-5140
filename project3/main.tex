@@ -1,97 +1,16 @@
 %% Beginning of file 'sample631.tex'
 %%
-%% Modified 2022 May  
+%% Modified 2022 May
 %%
 %% This is a sample manuscript marked up using the
 %% AASTeX v6.31 LaTeX 2e macros.
 %%
-%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls 
+%% AASTeX is now based on Alexey Vikhlinin's emulateapj.cls
 %% (Copyright 2000-2015).  See the classfile for details.
 
-%% AASTeX requires revtex4-1.cls and other external packages such as
-%% latexsym, graphicx, amssymb, longtable, and epsf.  Note that as of 
-%% Oct 2020, APS now uses revtex4.2e for its journals but remember that 
-%% AASTeX v6+ still uses v4.1. All of these external packages should 
-%% already be present in the modern TeX distributions but not always.
-%% For example, revtex4.1 seems to be missing in the linux version of
-%% TexLive 2020. One should be able to get all packages from www.ctan.org.
-%% In particular, revtex v4.1 can be found at 
-%% https://www.ctan.org/pkg/revtex4-1.
-
-%% The first piece of markup in an AASTeX v6.x document is the \documentclass
-%% command. LaTeX will ignore any data that comes before this command. The 
-%% documentclass can take an optional argument to modify the output style.
-%% The command below calls the preprint style which will produce a tightly 
-%% typeset, one-column, single-spaced document.  It is the default and thus
-%% does not need to be explicitly stated.
-%%
 %% using aastex version 6.3
 \documentclass[twocolumn]{aastex631}
 
-%% The default is a single spaced, 10 point font, single spaced article.
-%% There are 5 other style options available via an optional argument. They
-%% can be invoked like this:
-%%
-%% \documentclass[arguments]{aastex631}
-%% 
-%% where the layout options are:
-%%
-%%  twocolumn   : two text columns, 10 point font, single spaced article.
-%%                This is the most compact and represent the final published
-%%                derived PDF copy of the accepted manuscript from the publisher
-%%  manuscript  : one text column, 12 point font, double spaced article.
-%%  preprint    : one text column, 12 point font, single spaced article.  
-%%  preprint2   : two text columns, 12 point font, single spaced article.
-%%  modern      : a stylish, single text column, 12 point font, article with
-%% 		  wider left and right margins. This uses the Daniel
-%% 		  Foreman-Mackey and David Hogg design.
-%%  RNAAS       : Supresses an abstract. Originally for RNAAS manuscripts 
-%%                but now that abstracts are required this is obsolete for
-%%                AAS Journals. Authors might need it for other reasons. DO NOT
-%%                use \begin{abstract} and \end{abstract} with this style.
-%%
-%% Note that you can submit to the AAS Journals in any of these 6 styles.
-%%
-%% There are other optional arguments one can invoke to allow other stylistic
-%% actions. The available options are:
-%%
-%%   astrosymb    : Loads Astrosymb font and define \astrocommands. 
-%%   tighten      : Makes baselineskip slightly smaller, only works with 
-%%                  the twocolumn substyle.
-%%   times        : uses times font instead of the default
-%%   linenumbers  : turn on lineno package.
-%%   trackchanges : required to see the revision mark up and print its output
-%%   longauthor   : Do not use the more compressed footnote style (default) for 
-%%                  the author/collaboration/affiliations. Instead print all
-%%                  affiliation information after each name. Creates a much 
-%%                  longer author list but may be desirable for short 
-%%                  author papers.
-%% twocolappendix : make 2 column appendix.
-%%   anonymous    : Do not show the authors, affiliations and acknowledgments 
-%%                  for dual anonymous review.
-%%
-%% these can be used in any combination, e.g.
-%%
-%% \documentclass[twocolumn,linenumbers,trackchanges]{aastex631}
-%%
-%% AASTeX v6.* now includes \hyperref support. While we have built in specific
-%% defaults into the classfile you can manually override them with the
-%% \hypersetup command. For example,
-%%
-%% \hypersetup{linkcolor=red,citecolor=green,filecolor=cyan,urlcolor=magenta}
-%%
-%% will change the color of the internal links to red, the links to the
-%% bibliography to green, the file links to cyan, and the external links to
-%% magenta. Additional information on \hyperref options can be found here:
-%% https://www.tug.org/applications/hyperref/manual.html#x1-40003
-%%
-%% Note that in v6.3 "bookmarks" has been changed to "true" in hyperref
-%% to improve the accessibility of the compiled pdf file.
-%%
-%% If you want to create your own macros, you can do so
-%% using \newcommand. Your macros should appear before
-%% the \begin{document} command.
-%%
 \newcommand{\vdag}{(v)^\dagger}
 \newcommand\aastex{AAS\TeX}
 \newcommand\latex{La\TeX}
@@ -112,111 +31,28 @@
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{codegreen},
     keywordstyle=\color{blue},
     numberstyle=\tiny\color{codegray},
     stringstyle=\color{codepurple},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2
 }
 \lstset{style=mystyle}
 
 \pagenumbering{arabic}
 
-%% Reintroduced the \received and \accepted commands from AASTeX v5.2
-%\received{March 1, 2021}
-%\revised{April 1, 2021}
-%\accepted{\today}
-
-%% Command to document which AAS Journal the manuscript was submitted to.
-%% Adds "Submitted to " the argument.
-%\submitjournal{PSJ}
-
-%% For manuscript that include authors in collaborations, AASTeX v6.31
-%% builds on the \collaboration command to allow greater freedom to 
-%% keep the traditional author+affiliation information but only show
-%% subsets. The \collaboration command now must appear AFTER the group
-%% of authors in the collaboration and it takes TWO arguments. The last
-%% is still the collaboration identifier. The text given in this
-%% argument is what will be shown in the manuscript. The first argument
-%% is the number of author above the \collaboration command to show with
-%% the collaboration text. If there are authors that are not part of any
-%% collaboration the \nocollaboration command is used. This command takes
-%% one argument which is also the number of authors above to show. A
-%% dashed line is shown to indicate no collaboration. This example manuscript
-%% shows how these commands work to display specific set of authors 
-%% on the front page.
-%%
-%% For manuscript without any need to use \collaboration the 
-%% \AuthorCollaborationLimit command from v6.2 can still be used to 
-%% show a subset of authors.
-%
-%\AuthorCollaborationLimit=2
-%
-%% will only show Schwarz & Muench on the front page of the manuscript
-%% (assuming the \collaboration and \nocollaboration commands are
-%% commented out).
-%%
-%% Note that all of the author will be shown in the published article.
-%% This feature is meant to be used prior to acceptance to make the
-%% front end of a long author article more manageable. Please do not use
-%% this functionality for manuscripts with less than 20 authors. Conversely,
-%% please do use this when the number of authors exceeds 40.
-%%
-%% Use \allauthors at the manuscript end to show the full author list.
-%% This command should only be used with \AuthorCollaborationLimit is used.
-
-%% The following command can be used to set the latex table counters.  It
-%% is needed in this document because it uses a mix of latex tabular and
-%% AASTeX deluxetables.  In general it should not be needed.
-%\setcounter{table}{1}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% The following section outlines numerous optional output that
-%% can be displayed in the front matter or as running meta-data.
-%%
-%% If you wish, you may supply running head information, although
-%% this information may be modified by the editorial offices.
-%\shorttitle{AASTeX v6.3.1 Sample article}
-%\shortauthors{Schwarz et al.}
-%%
-%% You can add a light gray and diagonal water-mark to the first page 
-%% with this command:
-%% \watermark{text}
-%% where "text", e.g. DRAFT, is the text to appear.  If the text is 
-%% long you can control the water-mark size with:
-%% \setwatermarkfontsize{dimension}
-%% where dimension is any recognized LaTeX dimension, e.g. pt, in, etc.
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\graphicspath{{./}{figures/}}
-%% This is the end of the preamble.  Indicate the beginning of the
-%% manuscript itself with \begin{document}.
-
 \begin{document}
-
-%% Note that the \and command from previous versions of AASTeX is now
-%% depreciated in this version as it is no longer necessary. AASTeX 
-%% automatically takes care of all commas and "and"s between authors names.
-
-%% AASTeX 6.31 has the new \collaboration and \nocollaboration commands to
-%% provide the collaboration status of a group of authors. These commands 
-%% can be used either before or after the list of corresponding authors. The
-%% argument for \collaboration is the collaboration identifier. Authors are
-%% encouraged to surround collaboration identifiers with ()s. The 
-%% \nocollaboration command takes no argument and exists to indicate that
-%% the nearby authors are not part of surrounding collaborations.
 
 \title{ASTR 5140: Project 3}
 
@@ -230,53 +66,21 @@ Charlottesville, VA 22904, USA}
 530 McCormick Rd \\
 Charlottesville, VA 22904, USA}
 
-%% Mark off the abstract in the ``abstract'' environment. 
-% \begin{abstract}
-% \end{abstract}
-
-%% Keywords should appear after the \end{abstract} command. 
-%% The AAS Journals now uses Unified Astronomy Thesaurus concepts:
-%% https://astrothesaurus.org
-%% You will be asked to selected these concepts during the submission process
-%% but this old "keyword" functionality is maintained in case authors want
-%% to include these concepts in their preprints.
-% \keywords{Classical Novae (251) --- Ultraviolet astronomy(1736) --- History of astronomy(1868) --- Interdisciplinary astronomy(804)}
-
-%% From the front matter, we move on to the body of the paper.
-%% Sections are demarcated by \section and \subsection, respectively.
-%% Observe the use of the LaTeX \label
-%% command after the \subsection to give a symbolic KEY to the
-%% subsection for cross-referencing in a \ref command.
-%% You can use LaTeX's \ref and \label commands to keep track of
-%% cross-references to sections, equations, tables, and figures.
-%% That way, if you change the order of any elements, LaTeX will
-%% automatically renumber them.
-%%
-%% We recommend that authors also use the natbib \citep
-%% and \citet commands to identify citations.  The citations are
-%% tied to the reference list via symbolic KEYs. The KEY corresponds
-%% to the KEY in the \bibitem in the reference list below. 
-
 \clearpage
 \pagenumbering{arabic}
-
-
-
 
 \section{Black Hole Scaling Relations in IllustrisTNG}
 
 \subsection{Step 1: Halo Mass vs. Black Hole Mass}
 
-\textcolor{blue}{\textbf{Prompt:} After identifying the data columns you wish to use, plot the relationship between dark matter halo mass (x-axis) and black hole mass (y-axis) for both subhalo (SubFind) and group (FoF) quantities. 
-These plots must be included in the assignment you turn in, in addition to a short description of which 
-data columns you used and why. If you performed any additional data cleaning or alteration you should 
-summarize it here as well. Given the data volume you should think about how to present this data most 
+\textcolor{blue}{\textbf{Prompt:} After identifying the data columns you wish to use, plot the relationship between dark matter halo mass (x-axis) and black hole mass (y-axis) for both subhalo (SubFind) and group (FoF) quantities.
+These plots must be included in the assignment you turn in, in addition to a short description of which
+data columns you used and why. If you performed any additional data cleaning or alteration you should
+summarize it here as well. Given the data volume you should think about how to present this data most
 clearly.}
 
 \textbf{Columns and Data Preparation:}
-Masses were converted from simulation units to physical $M_\odot$ using the $10^{10}/h$ scaling given in the IllustrisTNG documentation . To enable log--log visualization, objects with non-finite or non-positive halo mass or black hole mass were excluded. Because the catalogs contain millions of entries, relations were visualized with a log-scaled \texttt{hexbin} density plot to avoid overplotting while retaining information about the number density in parameter space.
-
-% \medskip
+Masses were converted from simulation units to physical $M_\odot$ using the $10^{10}/h$ scaling given in the IllustrisTNG documentation. To enable log--log visualization, objects with non-finite or non-positive halo mass or black hole mass were excluded. Because the catalogs contain millions of entries, relations were visualized with a log-scaled \texttt{hexbin} density plot to avoid overplotting while retaining information about the number density in parameter space.
 
 \textbf{SubFind (Subhalo) Relation:}
 
@@ -288,8 +92,6 @@ For the SubFind catalog, the total bound subhalo mass (\texttt{SubhaloMass}) was
     \caption{Black hole mass versus bound subhalo mass from the SubFind catalog. Each hexagon represents the logarithmic number density of objects in that region of parameter space.}
     \label{fig:step1-subfind}
 \end{figure}
-
-% \medskip
 
 \textbf{FoF (Group) Relations:}
 
@@ -316,8 +118,6 @@ The use of both mass definitions allows comparison between a halo mass defined b
     \label{fig:step1-fof-m200c}
 \end{figure}
 
-
-
 \subsection{Step 2: Physical Scaling Between Halo Mass and Black Hole Mass}
 \textcolor{blue}{\textbf{Prompt:} Come up with a reasonable physical equation relating the black hole mass to the halo mass. You do not need to estimate physical constants, but you should explain why you chose the scaling that you
 did. Hypothesize as to the physical mechanisms that could give rise to such a relationship between these
@@ -331,10 +131,6 @@ M_{\rm BH} = A\, M_{\rm halo}^{\alpha}
 
 A power-law relation provides a natural description of the trends in Figures~\ref{fig:step1-subfind}--\ref{fig:step1-fof-m200c}: the relation is approximately linear in log--log space, consistent with $M_{\rm BH}\propto M_{\rm halo}^{\alpha}$. Similar scalings between black hole mass and host/halo properties are commonly reported in observational and theoretical work \citep{2002ApJ...578...90F}.
 
-
-
-
-
 \subsection{Step 3: SubFind vs. FoF Comparison}
 \textcolor{blue}{\textbf{Prompt:} Determine if there is a difference in the relation between the SubFind and FoF catalogs. Form a hypothesis as to why there should or should not be a difference and include it in your write-up.}
 
@@ -344,15 +140,13 @@ Additional scatter arises from environmental effects such as tidal stripping. Sa
 
 In contrast, FoF halos combine the mass of multiple galaxies and their black holes, which smooths the overall trend and reduces stochasticity, particularly at higher masses. At the massive end, both relations become tighter as black hole growth is dominated by mergers and sustained gas accretion, leading to a more regulated scaling with halo mass.
 
-Overall, the SubFind relation primarily traces black hole–galaxy co-evolution, while the FoF relation reflects the connection between black holes and the assembly history of their host dark matter halos.
-
-
+Overall, the SubFind relation primarily traces black hole--galaxy co-evolution, while the FoF relation reflects the connection between black holes and the assembly history of their host dark matter halos.
 
 \subsection{Step 4: Stellar Mass vs. Black Hole Mass}
-\textcolor{blue}{\textbf{Prompt:} Plot the relation between galaxy stellar mass and black hole mass and comment on it briefly. Is it tighter or more scattered than the halo mass – black hole mass relation? Is the correlation what you 
-expected? And so on. You may provide other supporting plots here if you wish. }
+\textcolor{blue}{\textbf{Prompt:} Plot the relation between galaxy stellar mass and black hole mass and comment on it briefly. Is it tighter or more scattered than the halo mass -- black hole mass relation? Is the correlation what you
+expected? And so on. You may provide other supporting plots here if you wish.}}
 
-A plot was created using the stellar mass of each galaxy, taken from the SubhaloMassType column (masked to type 4), and SubhaloBHMass for the black hole mass. This is shown in Figure \ref{fig:step4-stellar-vs-bh}.
+A plot was created using the stellar mass of each galaxy, taken from the SubhaloMassType column (masked to type 4), and SubhaloBHMass for the black hole mass. This is shown in Figure~\ref{fig:step4-stellar-vs-bh}.
 
 \begin{figure}
 \centering
@@ -363,12 +157,12 @@ A plot was created using the stellar mass of each galaxy, taken from the Subhalo
 
 The stellar mass--black hole mass relation shows a clear positive correlation and is generally as tight as the halo mass--black hole mass relation. This is expected because stellar mass directly traces the baryonic component of galaxies and their star formation histories, both of which are closely linked to black hole growth through gas accretion and feedback processes.
 
-At low stellar masses the relation broadens and exhibits a visible low-$M_{\rm BH}$ floor, consistent with the simulation’s black hole seeding prescription.
+At low stellar masses the relation broadens and exhibits a visible low-$M_{\rm BH}$ floor, consistent with the simulation's black hole seeding prescription.
 
 \subsection{Step 5: Additional Correlated Quantity}
-\textcolor{blue}{\textbf{Prompt:} Explore the data columns to identify another column that is correlated with black hole mass. Plot the relation and hypothesize as to the origin of the correlation.}
+\textcolor{blue}{\textbf{Prompt:} Explore the data columns to identify another column that is correlated with black hole mass. Plot the relation and hypothesize as to the origin of the correlation.}}
 
-Several parameters were plotted against black hole mass: velocity dispersion, star formation rate, gas mass, and maximum circular velocity. These are grouped in Figure \ref{fig:step5-param-plots}.
+Several parameters were plotted against black hole mass: velocity dispersion, star formation rate, gas mass, and maximum circular velocity. These are grouped in Figure~\ref{fig:step5-param-plots}.
 
 \begin{figure*}
 \centering
@@ -381,60 +175,54 @@ Velocity dispersion and maximum circular velocity show the strongest correlation
 
 In contrast, the correlations with star formation rate and gas mass are weaker. Star formation rate is a time-dependent quantity that reflects current activity rather than the integrated evolutionary history of the galaxy, and therefore does not track black hole growth as tightly. Similarly, total gas mass does not necessarily indicate how efficiently gas reaches the central black hole, as gas can remain in extended disks or be removed through feedback processes. Additionally, feedback from active galactic nuclei can suppress star formation in massive systems, producing quenched galaxies with large black holes but low star formation rates. This further weakens any direct correlation between star formation and black hole mass.
 
-
 \subsection{Step 6: Limitations and Caveats}
-\textcolor{blue}{\textbf{Prompt:} Comment on any limitations of the data products that you believe may impact the above 
-relations. If your work were to be published in a journal paper, what concerns would you have?}
+\textcolor{blue}{\textbf{Prompt:} Comment on any limitations of the data products that you believe may impact the above
+relations. If your work were to be published in a journal paper, what concerns would you have?}}
 
 Several limitations of the IllustrisTNG data products may impact the scaling relations presented above.
 
-First, the black hole seeding prescription introduces artificial floors in many of the relations. Black holes are inserted with a fixed seed mass once halos exceed a threshold mass, producing a population of galaxies with similar black hole masses at the low-mass end. This results in horizontal features in log–log space and increased scatter that are numerical artifacts rather than physical predictions. Any quantitative interpretation of the low-mass regime must therefore be treated with caution.
+First, the black hole seeding prescription introduces artificial floors in many of the relations. Black holes are inserted with a fixed seed mass once halos exceed a threshold mass, producing a population of galaxies with similar black hole masses at the low-mass end. This results in horizontal features in log--log space and increased scatter that are numerical artifacts rather than physical predictions. Any quantitative interpretation of the low-mass regime must therefore be treated with caution.
 
 Second, the finite resolution of the simulation limits the reliability of results for low-mass galaxies. Small halos may be only marginally resolved, leading to uncertain stellar masses, velocity dispersions, and gas properties. Resolution effects can artificially broaden correlations or suppress intrinsic trends.
 
-Third, filtering for $M_{\rm BH} > 0$ introduces a selection bias by excluding halos that do not host seeded black holes. This biases the sample toward systems above the seeding threshold and affects occupation fractions at low mass. As a result, derived scaling relations do not represent the full halo population but only black hole–hosting systems.
+Third, filtering for $M_{\rm BH} > 0$ introduces a selection bias by excluding halos that do not host seeded black holes. This biases the sample toward systems above the seeding threshold and affects occupation fractions at low mass. As a result, derived scaling relations do not represent the full halo population but only black hole--hosting systems.
 
 Finally, structural definitions differ between FoF groups and SubFind subhalos. FoF masses are based on a percolation algorithm, while $M_{200c}$ is defined via a spherical overdensity criterion. These definitions can diverge during mergers or in dense environments, leading to small but non-negligible differences in halo mass estimates. Such systematic uncertainties could affect slope measurements or normalization if one were to perform precise quantitative fits.
 
-If this work were to be published, additional robustness tests would be necessary. These would include resolution convergence checks, sensitivity tests to the seeding prescription, and comparisons across different halo mass definitions. 
-
-
-
-
+If this work were to be published, additional robustness tests would be necessary. These would include resolution convergence checks, sensitivity tests to the seeding prescription, and comparisons across different halo mass definitions.
 
 % ============================================================
 \section{Graduate Section (ASTR 5140 Only)}
 % ============================================================
 
-
 \subsection{1. Black Hole Mass--Velocity Dispersion Relation}
-\textcolor{blue}{\textbf{Prompt:} Make cuts on the halo catalog to identify a list of subhalos with well-defined black hole masses and velocity dispersions (SubFind field [`SubhaloVelDisp`]). Summarize your cuts and plot this relation. Fit a model of your own design to this relation via least-squares or other similar technique. Comment on your result.}
+\textcolor{blue}{\textbf{Prompt:} Make cuts on the halo catalog to identify a list of subhalos with well-defined black hole masses and velocity dispersions (SubFind field [`SubhaloVelDisp`]). Summarize your cuts and plot this relation. Fit a model of your own design to this relation via least-squares or other similar technique. Comment on your result.}}
 
 \textbf{Data Selection and Cuts:}
 
-Subhalos were selected from the SubFind catalog using their velocity dispersions 
-(\texttt{SubhaloVelDisp}) and black hole masses (\texttt{SubhaloBHMass}). 
-Both quantities were converted to physical units and filtered to ensure reliable measurements. 
+Subhalos were selected from the SubFind catalog using their velocity dispersions
+(\texttt{SubhaloVelDisp}) and black hole masses (\texttt{SubhaloBHMass}).
+Both quantities were converted to physical units and filtered to ensure reliable measurements.
 As with all previous plots, objects were required to have finite, positive values of velocity dispersion and black hole mass.
 
-Additional cuts were applied to isolate well-defined systems. Subhalos with 
-$M_{\rm BH} < 10^{6}\,M_\odot$ were excluded to avoid the artificial mass floor imposed by the 
-black hole seeding prescription in the simulation. A lower limit of 
-$\sigma > 20$ km s$^{-1}$ was also applied to remove poorly resolved, low-mass systems. 
+Additional cuts were applied to isolate well-defined systems. Subhalos with
+$M_{\rm BH} < 10^{6}\,M_\odot$ were excluded to avoid the artificial mass floor imposed by the
+black hole seeding prescription in the simulation. A lower limit of
+$\sigma > 20\ \mathrm{km\ s^{-1}}$ was also applied to remove poorly resolved, low-mass systems.
 After these cuts, \(\sim 3.7\times10^{4}\) galaxies remained for analysis.
 
 \textbf{Relation Between Black Hole Mass and Velocity Dispersion:}
 
 Figure~\ref{fig:grad-step1-mbh-sigma} shows the $M_{\rm BH}$--$\sigma$ relation for the selected subhalos, with the best-fit power law overplotted.
-The distribution exhibits a clear positive correlation, with more massive black holes residing in 
-galaxies with larger velocity dispersions. This trend is expected because velocity dispersion traces 
-the depth of the central gravitational potential, which regulates both black hole growth and bulge 
+The distribution exhibits a clear positive correlation, with more massive black holes residing in
+galaxies with larger velocity dispersions. This trend is expected because velocity dispersion traces
+the depth of the central gravitational potential, which regulates both black hole growth and bulge
 formation.
 
 \begin{figure}
 \centering
 \includegraphics[width=\linewidth]{science images/grad-step1-mbh-vs-sigma.png}
-\caption{Black hole mass as a function of velocity dispersion for selected SubFind subhalos. 
+\caption{Black hole mass as a function of velocity dispersion for selected SubFind subhalos.
 The red line shows the best-fit power-law relation obtained via least-squares fitting in log space.}
 \label{fig:grad-step1-mbh-sigma}
 \end{figure}
@@ -445,38 +233,38 @@ The relation was modeled using a power-law scaling of the form
 \begin{equation}
 \log_{10}(M_{\rm BH}) = \alpha + \beta \log_{10}(\sigma/200),
 \end{equation}
-where $\sigma$ is normalized to 200 km s$^{-1}$.
+where $\sigma$ is normalized to $200\ \mathrm{km\ s^{-1}}$.
 
 A least-squares fit in log space yielded
 \begin{align}
 \beta &\approx 4.2, \\
 A &\approx 1.6 \times 10^{9}\,M_\odot,
 \end{align}
-with a strong positive correlation (Pearson $r$ close to unity). The fitted relation is overplotted 
+with a strong positive correlation (Pearson $r$ close to unity). The fitted relation is overplotted
 in Figure~\ref{fig:grad-step1-mbh-sigma}.
 
 \textbf{Interpretation:}
 
-The fitted slope supports the 
-interpretation that black hole growth is closely coupled to the dynamical state of the host galaxy 
-bulge. Feedback from accretion can regulate gas inflows and star formation, producing a 
+The fitted slope supports the
+interpretation that black hole growth is closely coupled to the dynamical state of the host galaxy
+bulge. Feedback from accretion can regulate gas inflows and star formation, producing a
 self-regulated scaling between black hole mass and central velocity dispersion.
 
-Scatter in the relation arises from several factors, including differences in merger histories, 
-gas accretion rates, and the stochastic nature of feedback processes. Residual effects of the 
-seeding prescription and finite numerical resolution may also contribute, particularly at the 
+Scatter in the relation arises from several factors, including differences in merger histories,
+gas accretion rates, and the stochastic nature of feedback processes. Residual effects of the
+seeding prescription and finite numerical resolution may also contribute, particularly at the
 low-dispersion end.
 
-Overall, the simulation reproduces a realistic $M_{\rm BH}$–$\sigma$ scaling, indicating that the 
-subgrid prescriptions for black hole growth and feedback capture the essential physics governing 
-black hole–galaxy co-evolution.
-
+Overall, the simulation reproduces a realistic $M_{\rm BH}$--$\sigma$ scaling, indicating that the
+subgrid prescriptions for black hole growth and feedback capture the essential physics governing
+black hole--galaxy co-evolution.
 
 \subsection{2. AGN Luminosities}
-\textcolor{blue}{\textbf{Prompt:} Assume all black holes accrete at their Eddington luminosities and compute the corresponding AGN luminosities for the galaxies you selected from IllustrisTNG.}
+\textcolor{blue}{\textbf{Prompt:} Assume all black holes accrete at their Eddington luminosities and compute the corresponding AGN luminosities for the galaxies you selected from IllustrisTNG.}}
+
 \subsubsection{2a. Average Luminosity vs. Halo Mass}
 
-\textcolor{blue}{\textbf{Prompt:} Calculate and plot the average AGN luminosity as a function of halo mass.}
+\textcolor{blue}{\textbf{Prompt:} Calculate and plot the average AGN luminosity as a function of halo mass.}}
 
 For each selected SubFind subhalo, the host FoF halo was identified using the group index
 \texttt{SubhaloGrNr}, which maps each subhalo to an entry in the FoF catalog. Host halo masses were
@@ -485,9 +273,8 @@ spherical-overdensity halo mass definition used in galaxy formation studies.
 
 Assuming Eddington-limited accretion, the AGN luminosity was computed from the black hole mass as
 \begin{equation}
-L_{\rm Edd} = 1.26 \times 10^{38}\left(\frac{M_{\rm BH}}{M_\odot}\right)\ {\rm erg\ s^{-1}},
+L_{\rm Edd} = 1.26 \times 10^{38}\left(\frac{M_{\rm BH}}{M_\odot}\right)\ \mathrm{erg\ s^{-1}},
 \end{equation}
-
 using \texttt{SubhaloBHMass} for \(M_{\rm BH}\). To estimate the average trend,
 \(\langle L_{\rm Edd}\rangle\) was computed in logarithmically spaced bins of \(M_{200c}\).
 
@@ -513,9 +300,9 @@ log-spaced halo-mass bins.}
 \end{figure}
 
 \subsubsection{2b. Luminosity Distribution}
-\textcolor{blue}{\textbf{Prompt:} Plot the distribution (histogram) of AGN luminosities.}
+\textcolor{blue}{\textbf{Prompt:} Plot the distribution (histogram) of AGN luminosities.}}
 
-Using the same luminosities as before, a histogram was created to show the distribution of AGN luminosities, shown in Figure \ref{fig:grad-step2b-luminosity}. As expected, this is a projection of Figure \ref{fig:grad-step2a-ledd-m200c} along the vertical axis.
+Using the same luminosities as before, a histogram was created to show the distribution of AGN luminosities, shown in Figure~\ref{fig:grad-step2b-luminosity}. As expected, this is a projection of Figure~\ref{fig:grad-step2a-ledd-m200c} along the vertical axis.
 
 \begin{figure}
 \centering
@@ -524,19 +311,15 @@ Using the same luminosities as before, a histogram was created to show the distr
 \label{fig:grad-step2b-luminosity}
 \end{figure}
 
-
 \subsubsection{2c. Fraction of Halos Above Threshold}
-\textcolor{blue}{textbf{Prompt:} What fraction of halos in TNG100-1 have Eddington AGN luminosities greater than 1.28e46 ergs/s?}
+\textcolor{blue}{\textbf{Prompt:} What fraction of halos in TNG100-1 have Eddington AGN luminosities greater than $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$?}}
 
-Of the 36,883 selected subhalos, there were 3,416 above the threshold of 1.28e46 egs/s. This corresponds to a fraction of 0.0926 (9.26\%).
-
-
-
+Of the 36,883 selected subhalos, there were 3,416 above the threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$. This corresponds to a fraction of 0.0926 (9.26\%).
 
 \subsection{3. Using TNG Accretion Rates}
 
 \subsubsection{3a. Accretion Rate Comparison}
-\textcolor{blue}{\textbf{Prompt:} Make a plot comparing the black hole accretion rates in the TNG catalogs to the Eddington mass accretion rate as a function of halo mass Discuss whether the TNG results are consistent with Eddington accretion.}
+\textcolor{blue}{\textbf{Prompt:} Make a plot comparing the black hole accretion rates in the TNG catalogs to the Eddington mass accretion rate as a function of halo mass. Discuss whether the TNG results are consistent with Eddington accretion.}}
 
 Figure~\ref{fig:grad-step3a-accretion} compares the catalog black hole accretion rates,
 \(\dot{M}_{\rm TNG}\), to the corresponding Eddington mass accretion rates,
@@ -544,7 +327,6 @@ Figure~\ref{fig:grad-step3a-accretion} compares the catalog black hole accretion
 The right panel shows the ratio \(\dot{M}_{\rm TNG}/\dot{M}_{\rm Edd}\),
 with the dashed line marking exact Eddington accretion.
 
-The vast majority of systems lie well below the Eddington limit \textbf{\textcolor{red}{need citiation}}.
 The median ratio is
 \(\dot{M}_{\rm TNG}/\dot{M}_{\rm Edd} \sim 7 \times 10^{-4}\),
 indicating that typical black holes in TNG accrete at only
@@ -556,11 +338,10 @@ rather than a typical state in the simulation.
 Black hole growth in TNG is strongly self-regulated by
 AGN feedback.
 As a result, most black holes spend the majority of their time in
-the ub-Eddington regime.
+the sub-Eddington regime.
 
 Overall, the TNG results are not consistent with the assumption that
 black holes generically accrete at the Eddington rate.
-
 
 \begin{figure*}
 \centering
@@ -569,15 +350,14 @@ black holes generically accrete at the Eddington rate.
 \label{fig:grad-step3a-accretion}
 \end{figure*}
 
-
 \subsubsection{3b. Luminosities from TNG Accretion}
-\textcolor{blue}{\textbf{Prompt:} Let the efficiency of converting mass accretion into luminosity ($\epsilon r$ in the reading) be 0.1. Compute AGN luminosities for the galaxies you selected from IllustrisTNG using the black hole accretion rates in the TNG catalogs. Plot the average AGN luminosity calculated this way as a function of halo mass and compare to the same plot you made in 2a) above assuming Eddington mass accretion. Plot the distribution of AGN luminosities and compare to the plot from 2b) above. What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs / s when using the TNG mass accretion rates? How does this compare to your answer from 2c) where you assumed Eddington accretion? Comment on how the assumption of Eddington accretion rates may affect predictions for the frequency of observing bright quasars.}
+\textcolor{blue}{\textbf{Prompt:} Let the efficiency of converting mass accretion into luminosity ($\epsilon r$ in the reading) be 0.1. Compute AGN luminosities for the galaxies you selected from IllustrisTNG using the black hole accretion rates in the TNG catalogs. Plot the average AGN luminosity calculated this way as a function of halo mass and compare to the same plot you made in 2a) above assuming Eddington mass accretion. Plot the distribution of AGN luminosities and compare to the plot from 2b) above. What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs / s when using the TNG mass accretion rates? How does this compare to your answer from 2c) where you assumed Eddington accretion? Comment on how the assumption of Eddington accretion rates may affect predictions for the frequency of observing bright quasars.}}
 
 Using the TNG black hole accretion rates (\texttt{SubhaloBHMdot}), AGN luminosities were computed assuming a radiative efficiency $\epsilon_r = 0.1$,
 \begin{equation}
 L_{\rm TNG} = \epsilon_r \dot{M}_{\rm BH} c^2.
 \end{equation}
-Accretion rates were converted to cgs units to evaluate the luminosity in erg s$^{-1}$. Host halo masses were again taken from $M_{200c}$.
+Accretion rates were converted to cgs units to evaluate the luminosity in $\mathrm{erg\ s^{-1}}$. Host halo masses were again taken from $M_{200c}$.
 
 Figure~\ref{fig:grad-step3b-tng-accretion} shows $L_{\rm TNG}$ as a function of halo mass, with the binned mean $\langle L_{\rm TNG}\rangle$ overlaid. For comparison, the mean Eddington luminosity from Step~2a is also shown.
 
@@ -593,9 +373,9 @@ The median ratio is
 \[
 \frac{L_{\rm TNG}}{L_{\rm Edd}} \sim 7 \times 10^{-4},
 \]
-indicating again that typical black holes accrete at  0.1\% of their Eddington luminosity.
+indicating again that typical black holes accrete at 0.1\% of their Eddington luminosity.
 
-The luminosity distribution derived from TNG accretion rates is therefore shifted downward by three orders of magnitude relative to the Eddington-based distribution from Step~2b. High-luminosity systems are correspondingly rare. 
+The luminosity distribution derived from TNG accretion rates is therefore shifted downward by three orders of magnitude relative to the Eddington-based distribution from Step~2b. High-luminosity systems are correspondingly rare.
 
 This comparison demonstrates that assuming Eddington-limited accretion significantly overpredicts the frequency of bright quasar-like systems. In the simulation, most black holes spend the majority of their time in low-accretion states regulated by feedback and limited gas supply. Eddington accretion therefore represents an upper envelope rather than a typical operating state. Consequently, models that assume universal Eddington accretion will substantially overestimate the abundance of luminous AGN.
 
@@ -607,22 +387,20 @@ This comparison demonstrates that assuming Eddington-limited accretion significa
 \end{figure}
 
 \subsubsection{3c. Luminosity Distribution}
-\textcolor{blue}{\textbf{Prompt: } Plot the distribution of AGN luminosities and compare to the plot from 2b}
+\textcolor{blue}{\textbf{Prompt:} Plot the distribution of AGN luminosities and compare to the plot from 2b.}}
 
 The distributions of AGN luminosities were computed for the same set of selected subhalos used in the previous steps. Two luminosity estimates were compared:
 
 \begin{itemize}
     \item $L_{\rm Edd}$: luminosities assuming Eddington-limited accretion, computed from black hole mass.
     \item $L_{\rm TNG}$: luminosities derived from the TNG black hole accretion rates using
-    \begin{equation}
-        L_{\rm TNG} = \epsilon_r \dot{M}_{\rm BH} c^2,
-    \end{equation}
+    $L_{\rm TNG} = \epsilon_r \dot{M}_{\rm BH} c^2$
     with radiative efficiency $\epsilon_r = 0.1$.
 \end{itemize}
 
-Figure~\ref{fig:grad-step3c-tng-vs-edd-accretion} shows the probability density distributions of $\log_{10} L$ for both cases using logarithmic bins. The vertical dashed line marks the quasar threshold of 1.28E46 erg/s.
+Figure~\ref{fig:grad-step3c-tng-vs-edd-accretion} shows the probability density distributions of $\log_{10} L$ for both cases using logarithmic bins. The vertical dashed line marks the quasar threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$.
 
-The two distributions differ substantially. The Eddington-based luminosities are systematically higher, peaking near $\log_{10}(L/{\rm erg\ s^{-1}})\sim 44$--46, while the TNG-derived luminosities are shifted to much lower values, with a median several orders of magnitude smaller. The median ratio between the two is about 7E-4, indicating that most black holes in the simulation accrete far below the Eddington limit. Physically, this reflects the fact that sustained Eddington accretion is rare.
+The two distributions differ substantially. The Eddington-based luminosities are systematically higher, peaking near $\log_{10}(L/\mathrm{erg\ s^{-1}})\sim 44$--46, while the TNG-derived luminosities are shifted to much lower values, with a median several orders of magnitude smaller. The median ratio between the two is about $7\times10^{-4}$, indicating that most black holes in the simulation accrete far below the Eddington limit. Physically, this reflects the fact that sustained Eddington accretion is rare.
 
 \begin{figure}
 \centering
@@ -633,14 +411,14 @@ The two distributions differ substantially. The Eddington-based luminosities are
 
 \subsubsection{3d. Bright Quasar Fraction and Implications}
 
-\textcolor{blue}{\textbf{Prompt:} What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs/s 
-when using the TNG mass accretion rates? How does this compare to your answer from 
-2c) where you assumed Eddington accretion? Comment on how the assumption of 
-Eddington accretion rates may affect predictions for the frequency of observing bright 
-quasars}
+\textcolor{blue}{\textbf{Prompt:} What fraction of halos in TNG100-1 have AGN luminosities greater than 1.28e46 ergs/s
+when using the TNG mass accretion rates? How does this compare to your answer from
+2c) where you assumed Eddington accretion? Comment on how the assumption of
+Eddington accretion rates may affect predictions for the frequency of observing bright
+quasars.}}
 
 Using the luminosity-valid selected sample ($N = 36{,}883$ subhalos), we computed the fraction of
-objects exceeding a fixed quasar-like luminosity threshold of 1.28E46 erg/s. When assuming Eddington-limited accretion (Step 2c), $3{,}416$ objects exceeded the threshold,
+objects exceeding a fixed quasar-like luminosity threshold of $1.28\times10^{46}\ \mathrm{erg\ s^{-1}}$. When assuming Eddington-limited accretion (Step 2c), $3{,}416$ objects exceeded the threshold,
 corresponding to a fraction
 \begin{equation}
 f_{\rm Edd} = \frac{3416}{36883} \approx 0.0926 \quad (9.26\%).
