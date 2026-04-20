@@ -1,0 +1,47 @@
+# Conda environment for the TESS Light Curve Tutorial notebook
+#
+# Create environment:
+#   conda env create -f environment.yml
+#
+# Activate:
+#   conda activate tess-tutorial
+#
+# Register Jupyter kernel (run once, inside the activated env):
+#   python -m ipykernel install --user --name tess-tutorial --display-name "Python 3 (tess-tutorial)"
+#
+# Launch notebook:
+#   jupyter lab tess_tutorial.ipynb
+
+name: tess-tutorial
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # ── Core Python ─────────────────────────────────
+  - python=3.10
+
+  # ── Numerics & plotting ──────────────────────────
+  - numpy>=1.24
+  - scipy>=1.10
+  - matplotlib>=3.7
+
+  # ── Astronomy ────────────────────────────────────
+  - astropy>=5.3          # BLS, LombScargle, units, coordinates
+  - astroquery>=0.4.6     # MAST, Simbad, Vizier queries
+  - lightkurve>=2.4       # TESS/Kepler light curve access and tools
+  - batman-package>=2.4.9  # Mandel & Agol (2002) analytic transit model
+
+  # ── Jupyter ──────────────────────────────────────
+  - jupyterlab>=4.0
+  - notebook>=7.0
+  - ipykernel>=6.0
+  - ipywidgets>=8.0       # interactive widgets (optional but useful)
+
+  # ── Optional: GP modelling & MCMC (advanced exercises) ──────────────────────
+  # - pip:
+  #   - celerite2          # Gaussian processes for stellar variability
+  #   - emcee              # MCMC sampler for transit parameter posteriors
+  #   - dynesty            # nested sampling (alternative to emcee)
+  #   - ldtk               # stellar limb-darkening from atmosphere models
